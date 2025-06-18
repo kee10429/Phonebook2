@@ -121,7 +121,7 @@ public class PhonebookController extends HttpServlet {
 			
 			//기존 정보
 			PhonebookDAO phonebookDAO = new PhonebookDAO();
-			PersonVO personVO = PhonebookDAO.getPerson(no);
+			PersonVO personVO = phonebookDAO.getPerson(no);
 			
 			//request에 담기
 			request.setAttribute("personVO", personVO);
@@ -149,6 +149,8 @@ public class PhonebookController extends HttpServlet {
 			  //-> 같은 모양으로 생긴 생성자를 VO에 만들어야함
 			
 			System.out.println(personVO);
+			
+			response.sendRedirect("http://localhost:8080/phonebook2/pbc?action=list");
 			
 			
 			

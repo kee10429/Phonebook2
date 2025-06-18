@@ -38,19 +38,19 @@
                <td>
       				<%= personList.get(i).getName() %>
                	</td>
-            <tr>
+            </tr>
             <tr>
                <td>핸드폰(hp)</td>
                <td><%= personList.get(i).getHp() %></td>
-            <tr>
+            </tr>
             <tr>
                <td>회사(company)</td>
                <td><%= personList.get(i).getCompany() %></td>
-            <tr>   
+            </tr>   
             <tr>
                <td>
                
-               		<a href="http://localhost:8080/phonebook2/pbc?action=mform&no=<%= personList.get(i).getPersonId() %>"
+               		<a href="http://localhost:8080/phonebook2/pbc?action=mform&no=<%= personList.get(i).getPersonId() %>">
                			[수정폼으로 이동]
                		</a>
                		
@@ -62,7 +62,7 @@
 						[삭제] <%= personList.get(i).getPersonId() %>
 					</a>
 				</td>   <!-- 원래 버튼으로 해야된다 js필요 안배워서 a태그로 구현 -->
-            <tr>      
+            </tr>      
          </tbody>
       </table>
       <br>

@@ -21,7 +21,12 @@ public class PersonVO {
 		this.company = company;
 	}
 
-
+	public PersonVO(String name, String hp, String company, int personId) {
+		this.name = name;
+		this.hp = hp;
+		this.company = company;
+		this.personId = personId;
+	}
 
 	public PersonVO(int personId, String name, String hp, String company) {
 		this.personId = personId;

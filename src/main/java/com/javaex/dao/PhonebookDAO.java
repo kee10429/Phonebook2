@@ -231,11 +231,11 @@ public class PhonebookDAO {
 	
 	
 	//사람 조회
-	public int getPerson(int personId) {
+	public PersonVO getPerson(int personId) {
 		
 		System.out.println("getPerson()");
 		
-		int count = -1;
+		PersonVO personVO = null;
 		
 		this.connect();
 		
@@ -253,10 +253,17 @@ public class PhonebookDAO {
 			pstmt.setInt(1, personId);
 			
 			//- 실행
-			count = pstmt.executeUpdate();
+		rs = pstmt.executeQuery();
 			
 			//- 결과처리
-			System.out.println(count + "건이 수정되었습니다");
+			if(rs.next()) {
+				int id = rs.getInt("person_id");
+				String name = rs.getString("name");
+				String hp = rs.getString("hp");
+				String company = rs.getString("company");
+				
+				personVO = new PersonVO(id, name, hp, company);
+			}
 			
 		}catch (SQLException e) {
 			System.out.println("error:" + e);
@@ -264,7 +271,7 @@ public class PhonebookDAO {
 	
 	this.close();
 
-	return count;
+	return personVO;
 		
 		
 	}
