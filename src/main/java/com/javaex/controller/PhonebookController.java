@@ -112,7 +112,50 @@ public class PhonebookController extends HttpServlet {
 			// 리다이렉트 action=list
 			response.sendRedirect("http://localhost:8080/phonebook2/pbc?action=list");
 			
+		}else if("mform".equals(action)) {
+			System.out.println("수정폼");
+			
+			// 1) 기존 정보 가져오기
+			
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			//기존 정보
+			PhonebookDAO phonebookDAO = new PhonebookDAO();
+			PersonVO personVO = PhonebookDAO.getPerson(no);
+			
+			//request에 담기
+			request.setAttribute("personVO", personVO);
+			
+			//2)jsp에게 화면을 그리게 한다(포워드)
+			//mForm.jsp 에게 포워드한다
+			RequestDispatcher rd = request.getRequestDispatcher("/mForm.jsp");
+			rd.forward(request, response);
+			
+		}else if("modify".equals(action)) {
+			System.out.println("수정");
+			
+			//1)파라미터 값 4개 받아오기
+			int personId = Integer.parseInt(request.getParameter("person_id"));    
+			String name = request.getParameter("name");
+			String hp = request.getParameter("hp");
+			String company = request.getParameter("company");
+			
+			//묶기
+			PersonVO personVO = new PersonVO(personId, name, hp, company);
+			
+			//2)Dao를 통해서 수정하기
+			PhonebookDAO phonebookDAO = new PhonebookDAO();
+			phonebookDAO.personUpdate(personVO);
+			  //-> 같은 모양으로 생긴 생성자를 VO에 만들어야함
+			
+			System.out.println(personVO);
+			
+			
+			
 		}
+		
+		
+		
 	}
 
 
