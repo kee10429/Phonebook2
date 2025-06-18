@@ -25,14 +25,14 @@
 			<br>
 			
 			<label>핸드폰(hp)</label>
-			<input type="text" name="hp" value=" <%= personVO.getHp() %> ">
+			<input type="text" name="hp" value=" <%= personVO.getHp() %>">
 			<br>
 			
 			<label>회사(company)</label>
 			<input type="text" name="company" value="<%= personVO.getCompany() %>">
 			<br>
 			
-			<input type="hidden" name="person_id" value="<%= personVO.getPersonId() %> ">
+			<input type="hidden" name="person_id" value="<%= personVO.getPersonId() %>">
 			
 			
 			<input type="hidden" name="action" value="modify">
